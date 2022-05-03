@@ -3,7 +3,7 @@ import os
 from os.path import join, dirname, realpath
 from bom_compare import *
 
-path = "/Users/cdsfkolson/Documents/Tether_device/Bom-Compare"
+
 # app.config['UPLOAD_FOLDER']
 # @app.route("/")
 # def hello_world():
@@ -21,6 +21,7 @@ def uploadFiles():
       # get the uploaded file
       uploaded_file = request.files['file']
       uploaded_file1 = request.files['file1']
+      path = request.form['fLocation']
       print("here")
       if uploaded_file.filename != '' and uploaded_file1.filename != '':
            print("Here")
@@ -33,7 +34,7 @@ def uploadFiles():
            rev = revChange(old_bom, new_bom)
            rmPart = removeParts(old_bom, new_bom)
            addPart = addParts(old_bom, new_bom)
-           return render_template('results.html', len = len(rev), rev = rev)
+           return render_template('results.html', len = len(rev), rev = rev, len1 = len(desc), desc = desc, len2 = len(qty), qty = qty, len3 = len(rmPart), rmPart = rmPart, len4 = len(addPart), addPart = addPart)
       return redirect(url_for('index'))
 
 app.run(host='127.0.0.1', port=5000, debug=True)

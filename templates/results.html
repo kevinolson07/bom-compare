@@ -1,21 +1,40 @@
 <html>
-    <div>
-        <h2>Revsion Changes</h2>
-        {%for i in range(0, len)%}
-            <li>{{rev[i]}}</li>
-        {%endfor%}
-    </div>
-    <div>
-        <h2>QTY Changes</h2>
-        <p>
-            {{rev}}
-        </p>
-    </div>
-    <div>
-        <h2>Description Changes</h2>
-        <p>
-            {{rev}}
-        </p>
-    </div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <body style="margin-inline: 10px;">
+        <div>
+            <h2>Revsion Changes</h2>
+            {%for i in range(0, len)%}
+                <li>{{rev[i]}}</li>
+            {%endfor%}
+        </div>
+        <div>
+            <h2>Description Changes</h2>
+            {%for x in range(0, len1)%}
+                <li>{{desc[x]}}</li>
+            {%endfor%}
+        </div>
+        <div>
+            <h2>Quantity Changes</h2>
+            {%for y in range(0, len2)%}
+                <li>{{qty[y]}}</li>
+            {%endfor%}
+        </div>
+        <div>
+            <h2>Removed Parts</h2>
+            {%for a in range(0, len3)%}
+                <li>{{rmPart[a]}}</li>
+            {%endfor%}
+        </div>
+        <div>
+            <h2>Added Parts</h2>
+            {%for b in range(0, len4)%}
+                <li>{{addPart[b]}}</li>
+            {%endfor%}
+        </div>
+        
+    </body>
+    <form style="text-align:center;" action="/">
+        <input type="submit" value="Upload New" />
+    </form>
    
 </html>
