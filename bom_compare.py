@@ -5,16 +5,16 @@ def selectBom(bom1, bom2):
     new_bom = []
     # bom1 = input("Enter Old Revison of BOM file name: ")
     # bom2 = input("Enter New Revison of BOM file name: ")
-    with open(bom1, 'r') as file:
-        csvreader = csv.reader(file)
-        header = next(csvreader)
-        for row in csvreader:
-            old_bom.append(row)
-    with open(bom2, 'r') as file:
-        csvreader1 = csv.reader(file)
-        header1 = next(csvreader1)
-        for row1 in csvreader1:
-            new_bom.append(row1)
+    # with open(bom1, 'r') as file:
+    csvreader = csv.reader(bom1, delimiter=',')
+    header = next(csvreader)
+    for row in csvreader:
+        old_bom.append(row)
+    # with open(bom2, 'r') as file:
+    csvreader1 = csv.reader(bom2, delimiter=',')
+    header1 = next(csvreader1)
+    for row1 in csvreader1:
+        new_bom.append(row1)
     return old_bom, new_bom
 
 def descChange(old_bom,new_bom):

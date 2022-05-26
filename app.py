@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from bom_compare import *
+from io import TextIOWrapper
 
 
 app = Flask(__name__)
@@ -14,13 +15,11 @@ def uploadFiles():
         # get the uploaded file
         uploaded_file = request.files['file']
         uploaded_file1 = request.files['file1']
-        path = request.form['fLocation']
         print("here")
         if uploaded_file.filename != '' and uploaded_file1.filename != '':
             print("Here")
-            uploaded_file = "%s/%s"%(path, uploaded_file.filename)
-            uploaded_file1 = "%s/%s"%(path, uploaded_file1.filename)
-            print(uploaded_file, uploaded_file1)
+            uploaded_file = TextIOWrapper(uploaded_file, encoding='utf-8')
+            uploaded_file1 = TextIOWrapper(uploaded_file1, encoding='utf-8')
             old_bom, new_bom = selectBom(uploaded_file, uploaded_file1)
             desc = descChange(old_bom, new_bom)
             qty = qtyChange(old_bom, new_bom)
@@ -34,4 +33,4 @@ def uploadFiles():
 
 
 
-app.run(host='127.0.0.1', port=5000, debug=True)
+app.run(host='0.0.0.0', port=5000, debug=True)
